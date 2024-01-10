@@ -11,6 +11,15 @@ public class User {
     private String password;
     private Role role;
     private List<Announcement> announcements;
+    private List<Announcement> favorites;
+
+    public List<Announcement> getFavorites() {
+        return favorites;
+    }
+
+    public void setFavorites(List<Announcement> favorites) {
+        this.favorites = favorites;
+    }
 
     public User() {
     }
@@ -73,6 +82,7 @@ public class User {
                 ", password='" + password + '\'' +
                 ", role=" + role +
                 ", announcements=" + announcements +
+                ", favorites=" + favorites +
                 '}';
     }
 }

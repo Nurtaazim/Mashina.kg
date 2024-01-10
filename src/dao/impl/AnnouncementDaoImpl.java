@@ -15,6 +15,7 @@ public class AnnouncementDaoImpl implements AnnouncementDao {
 
     @Override
     public String add(Announcement announcement) {
+
         database.getAnnouncements().add(announcement);
         return "Successfully added!";
     }

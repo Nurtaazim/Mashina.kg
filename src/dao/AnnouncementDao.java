@@ -6,8 +6,7 @@ import java.util.List;
 
 public interface AnnouncementDao {
     String add (Announcement announcement);
-    String update ();
-    String delete ();
+    String delete (long id);
     Announcement findById(long id);
     List<Announcement> getAll();
 

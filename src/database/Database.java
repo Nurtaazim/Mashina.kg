@@ -1,5 +1,6 @@
 package database;
 
+
 import models.Announcement;
 import models.User;
 
@@ -8,7 +9,6 @@ import java.util.List;
 
 public class Database {
     private List<User> users = new ArrayList<>();
-    private List<Announcement> announcements = new ArrayList<>();
 
     public List<User> getUsers() {
         return users;
@@ -19,10 +19,10 @@ public class Database {
     }
 
     public List<Announcement> getAnnouncements() {
+        List<Announcement> announcements = new ArrayList<>();
+        for (User user : users) {
+            announcements.addAll(user.getAnnouncements());
+        }
         return announcements;
-    }
-
-    public void setAnnouncements(List<Announcement> announcements) {
-        this.announcements = announcements;
     }
 }

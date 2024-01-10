@@ -25,4 +25,11 @@ public class Database {
         }
         return announcements;
     }
+
+    @Override
+    public String toString() {
+        return "Database{" +
+                "users=" + users +
+                '}';
+    }
 }

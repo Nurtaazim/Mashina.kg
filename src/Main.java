@@ -9,6 +9,7 @@ import service.impl.UserServiceImpl;
 import java.util.Scanner;
 
 public class Main {
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         Database database = new Database();
@@ -30,7 +31,8 @@ public class Main {
                     String pass = scanner.nextLine();
                     user = userService.login(gmail, pass);
                     if (user == null) break ;
-                    else {
+                    Loop:
+                    while (true) {
                         System.out.println("Wellcome");
                         System.out.println("""
                                 1 - Избранные
@@ -38,19 +40,53 @@ public class Main {
                                 3 - Рекламы
                                 4 - Удалить рекламу
                                 5 - Мои обьявление
+                                6 - Добавить в избранные
+                                0 - Выйти
                                 """);
-                        switch (scanner.nextLine()){
-                            case "1"->{
+                        switch (scanner.nextLine()) {
+                            case "1" -> {
                                 System.out.println(user.getFavorites());
                             }
-                            case "2"->{
-                               if (user.getRole().equals(Role.USER)){
-                                   System.out.println("Вы не можете опубликовать обьявление!");
-                               }else {
-                                   Announcement announcement = new Announcement();
-                                   System.out.println("Напишите название машины:");
-                                   announcement.setName(scanner.nextLine());
-                               }
+                            case "2" -> {
+                                if (user.getRole().equals(Role.USER)) {
+                                    System.out.println("Вы не можете опубликовать обьявление!");
+                                } else {
+                                    Announcement announcement = new Announcement();
+                                    System.out.println("Напишите название машины:");
+                                    announcement.setName(scanner.nextLine());
+                                    System.out.println("Напишите описание:");
+                                    announcement.setDescription(scanner.nextLine());
+                                    System.out.println(":");
+                                    announcement.setPrice(new Scanner(System.in).nextDouble());
+                                    announcement.setOwner(user);
+                                    announcement.setId(ID.generateId());
+                                    userService.addAnnouncement(announcement, user);
+                                }
+                            }
+                            case "3" ->{
+                                for (Announcement announcement : database.getAnnouncements()) {
+                                    System.out.println(announcement);
+                                }
+
+                            }
+                            case "4" ->{
+                                System.out.println("Напишите id рекламы которого хотите удалить:");
+                                long id = new Scanner(System.in).nextLong();
+                                System.out.println(userService.deleteAnnouncement(id, user));
+                            }
+                            case "5" ->{
+                                for (Announcement announcement : user.getAnnouncements()) {
+                                    System.out.println(announcement);
+                                }
+                            }
+                            case "6" ->{
+                                System.out.println("Напишите айди рекламы чтобы добавить в избранные:");
+                                long id = new Scanner(System.in).nextLong();
+                                userService.addAnnouncementToFovarite(id, user);
+                            }
+                            case "0" -> {
+                                user = null;
+                                break Loop;
                             }
                         }
                     }
@@ -65,7 +101,7 @@ public class Main {
                     newUser.setPassword(scanner.nextLine());
                     System.out.println("""
                             Если вы продавец нажмите 1
-                            Если вы покупатель нажмите 1
+                            Если вы покупатель нажмите 2
                             """);
                     switch (scanner.nextLine()){
                         case "1" ->{

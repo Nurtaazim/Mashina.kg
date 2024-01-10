@@ -65,7 +65,7 @@ public class Main {
                     newUser.setPassword(scanner.nextLine());
                     System.out.println("""
                             Если вы продавец нажмите 1
-                            Если вы покупатель нажмите 2
+                            Если вы покупатель нажмите 1
                             """);
                     switch (scanner.nextLine()){
                         case "1" ->{

@@ -51,6 +51,7 @@ public class UserDaoImpl implements UserDao {
         for (Announcement announcement : database.getAnnouncements()) {
             if (announcement.getId() == id){
                 user.getFavorites().add(announcement);
+                System.out.println("Удачно добавлено ! ");
             }
         }
     }

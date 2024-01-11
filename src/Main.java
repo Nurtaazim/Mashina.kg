@@ -65,7 +65,7 @@ public class Main {
                     newUser.setPassword(scanner.nextLine());
                     System.out.println("""
                             Если вы продавец нажмите 1
-                            Если вы покупатель нажмите 1
+                            Если вы покупатель нажмите 2
                             """);
                     switch (scanner.nextLine()){
                         case "1" ->{
@@ -77,6 +77,7 @@ public class Main {
                     }
                     System.out.println(userService.register(newUser));
                 }
+
                 case "3" ->{
                     break MainLoop;
                 }

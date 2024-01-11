@@ -57,7 +57,7 @@ public class Main {
                                     announcement.setName(scanner.nextLine());
                                     System.out.println("Напишите описание:");
                                     announcement.setDescription(scanner.nextLine());
-                                    System.out.println(":");
+                                    System.out.println("Укажите цену:");
                                     announcement.setPrice(new Scanner(System.in).nextDouble());
                                     announcement.setOwner(user);
                                     announcement.setId(ID.generateId());

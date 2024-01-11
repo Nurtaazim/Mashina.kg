@@ -2,6 +2,7 @@ package models;
 
 import enums.Role;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class User {
@@ -10,8 +11,8 @@ public class User {
     private String gmail;
     private String password;
     private Role role;
-    private List<Announcement> announcements;
-    private List<Announcement> favorites;
+    private List<Announcement> announcements = new ArrayList<>();
+    private List<Announcement> favorites = new ArrayList<>();
 
     public List<Announcement> getFavorites() {
         return favorites;
@@ -76,7 +77,6 @@ public class User {
     @Override
     public String toString() {
         return "User{" +
-                "id=" + id +
                 ", name='" + name + '\'' +
                 ", gmail='" + gmail + '\'' +
                 ", password='" + password + '\'' +

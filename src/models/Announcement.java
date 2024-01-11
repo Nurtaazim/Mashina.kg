@@ -57,7 +57,7 @@ public class Announcement {
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 ", price=" + price +
-                ", owner=" + owner +
+                ", owner=" + owner.getName() +
                 '}';
     }
 }

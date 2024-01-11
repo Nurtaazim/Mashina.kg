@@ -31,9 +31,10 @@ public class Main {
                     String pass = scanner.nextLine();
                     user = userService.login(gmail, pass);
                     if (user == null) break ;
+                    System.out.println("Wellcome");
                     Loop:
                     while (true) {
-                        System.out.println("Wellcome");
+
                         System.out.println("""
                                 1 - Избранные
                                 2 - Добавить рекламу
@@ -64,10 +65,7 @@ public class Main {
                                 }
                             }
                             case "3" ->{
-                                for (Announcement announcement : database.getAnnouncements()) {
-                                    System.out.println(announcement);
-                                }
-
+                                System.out.println(database.getAnnouncements());
                             }
                             case "4" ->{
                                 System.out.println("Напишите id рекламы которого хотите удалить:");

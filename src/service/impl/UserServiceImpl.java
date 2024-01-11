@@ -24,16 +24,16 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public String addAnnouncement(Announcement announcement, User user) {
-        return null;
+        return userDao.addAnnouncement(announcement, user);
     }
 
     @Override
     public String deleteAnnouncement(long id, User user) {
-        return null;
+        return userDao.deleteAnnouncement(id, user);
     }
 
     @Override
     public void addAnnouncementToFovarite(long id, User user) {
-
+        userDao.addAnnouncementToFovarite(id, user);
     }
 }
